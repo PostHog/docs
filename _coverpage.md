@@ -2,7 +2,7 @@
 
 ![logo](_media/posthog-logo-svg.svg)
 
-# PostHog <small>1.0.9</small>
+# PostHog Docs <small>1.0.9</small>
 
 > Open source product analytics.
 
@@ -12,5 +12,5 @@
 - Developer friendly
 
 [GitHub](https://github.com/posthog/posthog/)
-[Get Started](#docsify)
+[Get Started](/deployment)
 
