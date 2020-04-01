@@ -65,4 +65,15 @@ And the graph will convert to Stickiness.
 
 ![stickiness image 2](https://posthog.com/wp-content/uploads/2020/03/Posthog-7.png)
 
+### Trend segmentation by User
+
+If you chart your Trend Graph as a line chart you can see all the users that have performed that action on that day. This can help you understand the context behind the aggregated data as you can look at the individual users behind it.
+
+Just click on the day you would like to inspect.
+
+![users in trends 1](https://posthog.com/wp-content/uploads/2020/04/Fullscreen_4_1_20__5_23_PM_png-2.png)
+
+And the users will load into a table
+
+![users in trends 2](https://posthog.com/wp-content/uploads/2020/04/Posthog.png)
 
