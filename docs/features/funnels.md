@@ -10,7 +10,7 @@ A funnel is a series of Actions.
 
 You can watch a short training video on Funnels here:
 
-[![Funnels Training Video](http://img.youtube.com/vi/eaYH-T6zhKI/0.jpg)](http://www.youtube.com/watch?v=eaYH-T6zhKI)
+[![Funnels Training Video](https://img.youtube.com/vi/eaYH-T6zhKI/0.jpg)](http://www.youtube.com/watch?v=eaYH-T6zhKI)
 
 ## Creating a funnel
 
