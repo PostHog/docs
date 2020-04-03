@@ -22,7 +22,13 @@ We recommend getting at the very least a `hobby-dev` Postgres and Dyno for low v
 
 # Docker
 
-Using the [posthog/posthog:latest](https://hub.docker.com/r/posthog/posthog) Docker image.
+We have [three types of images](https://hub.docker.com/r/posthog/posthog):
+
+ - `posthog/posthog:latest`, which builds straight of master
+ - `posthog/posthog:preview`, which is used for the preview image
+ - `posthog/posthog:release-[version number]`, so you can pin a specific version.
+
+?> We recommend using `posthog/posthog:latest`, so you always have the latest features and security updates
 
 ## Using Docker Compose 
 
@@ -71,7 +77,7 @@ See [running behind a proxy](/running-behind-a-proxy) for instructions on how to
 Secret keys are used to encrypt cookies, password reset emails [and other things](https://docs.djangoproject.com/en/3.0/ref/settings/#secret-key). To generate a secret key, run:
 
 ```bash
-python -c "import random,string;print(''.join([random.SystemRandom().choice(\"{}{}{}\".format(string.ascii_letters, string.digits, string.punctuation)) for i in range(63)]).replace('\\'','\\'\"\\'\"\\''))";
+openssl rand -hex 32
 ```
 
 # K8s
