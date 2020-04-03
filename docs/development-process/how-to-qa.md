@@ -1,3 +1,5 @@
+# How to QA
+
 ## Why QA something?
 
 We’ve found that almost every time we QA something, we find something that would have been confusing/annoying to our users. Hence it’s worth doing QA for everything. There are very few excpetions
@@ -50,7 +52,21 @@ You can then follow the process by running
 heroku pg:wait -a posthog
 ```
 
+Remove the other free database
+
+```bash
+heroku addons -a APP_NAME
+heroku addons:destroy [free database] -a APP_NAME
+```
+
 Then attach the database to the test app.
 ```bash
 heroku addons:attach ADDON_NAME -a APP_NAME
+```
+
+
+Set DATABASE_URL of the other addon if that's not already done
+```bash
+heroku config -a APP_NAME
+heroku config:set DATABASE_URL=[url] -a APP_NAME
 ```
