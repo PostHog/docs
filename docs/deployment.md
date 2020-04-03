@@ -1,3 +1,5 @@
+# Deployment
+
 # One-line docker preview
 
 ```bash
@@ -6,18 +8,11 @@ docker run -t -i --rm --publish 8000:8000 -v postgres:/var/lib/postgresql postho
 
 This image has everything you need to try out PostHog locally! It will set up a server on http://127.0.0.1:8000.
 
+!> The preview image is not meant for production.
+
 # Deploy to Heroku
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/posthog/posthog)
-
-
-# Production installation
-
-The preview image has Postgres running locally and runs in debug mode.
-
-For a production installation you have a few options:
-
-## Deploy to Heroku
 
 Heroku is the quickest way to get a production PostHog environment up-and-running.
 
@@ -25,24 +20,11 @@ We recommend getting at the very least a `hobby-dev` Postgres and Dyno for low v
 
 [Click here](/upgrading-PostHog) for instructions on upgrading PostHog on Heroku to the latest version.
 
-
-
-## Docker
+# Docker
 
 Using the [posthog/posthog:latest](https://hub.docker.com/r/posthog/posthog) Docker image.
 
-### Running behind a proxy?
-See [running behind a proxy](/running-behind-a-proxy) for instructions on how to set that up.
-
-### Secret key
-
-Secret keys are used to encrypt cookies, password reset emails [and other things](https://docs.djangoproject.com/en/3.0/ref/settings/#secret-key). To generate a secret key, run:
-
-```bash
-python -c "import random,string;print(''.join([random.SystemRandom().choice(\"{}{}{}\".format(string.ascii_letters, string.digits, string.punctuation)) for i in range(63)]).replace('\\'','\\'\"\\'\"\\''))";
-```
-
-### On Ubuntu/Mac
+## Using Docker Compose 
 
 1. [Install Docker](https://docs.docker.com/installation/ubuntulinux/)
 2. [Install Docker Compose](https://docs.docker.com/compose/install/)
@@ -51,7 +33,6 @@ python -c "import random,string;print(''.join([random.SystemRandom().choice(\"{}
 sudo apt-get install git
 git clone https://github.com/posthog/posthog.git
 cd posthog
-docker-compose build
 docker-compose up -d
 ```
 
@@ -59,7 +40,41 @@ If you run your Postgres database somewhere else (like RDS, or just a different 
 
 If you're running locally, make sure to add `DEBUG: 1` as an environment variable, otherwise you'll get stuck in an infinite loop of SSL redirects.
 
-### K8s
+
+## Running behind a proxy?
+
+If you're running PostHog behind a proxy, there's a few more things you need to do to make sure PostHog (specifically the toolbar, which runs on your own site) works.
+
+Make sure you have the `IS_BEHIND_PROXY` environment variable set to true
+
+### NGINX config
+
+You need to make sure your proxy server is sending X-Forwarded-For headers. For NGINX, that config should look something like:
+
+```nginx
+    location / {
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header Host $http_host;
+        proxy_redirect off;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_pass http://127.0.0.1:8000;
+    }
+```
+
+### Infinite redirect
+
+Some users have reported getting infinite redirects running behind a proxy. You can set the `DISABLE_SECURE_SSL_REDIRECT` variable to make PostHog run using http.
+See [running behind a proxy](/running-behind-a-proxy) for instructions on how to set that up.
+
+## Secret key
+
+Secret keys are used to encrypt cookies, password reset emails [and other things](https://docs.djangoproject.com/en/3.0/ref/settings/#secret-key). To generate a secret key, run:
+
+```bash
+python -c "import random,string;print(''.join([random.SystemRandom().choice(\"{}{}{}\".format(string.ascii_letters, string.digits, string.punctuation)) for i in range(63)]).replace('\\'','\\'\"\\'\"\\''))";
+```
+
+# K8s
 
 Here's an example configmap you can use
 ```yaml
@@ -112,7 +127,7 @@ spec:
     targetPort: 8000
 ```
 
-### From source
+# From source
 1. Make sure you have Python >= 3.7 and pip installed
 2. [Install Yarn](https://classic.yarnpkg.com/en/docs/install/#mac-stable)
 3. Run the following:

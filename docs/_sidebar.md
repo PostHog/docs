@@ -1,6 +1,5 @@
 * Getting started
   * [Deployment](/deployment)
-    * [Running behind a proxy](/running-behind-a-proxy)
     * [Scaling PostHog](/scaling-posthog)
     * [Upgrading PostHog](/upgrading-posthog)
   * [Snippet installation](/snippet-installation)
