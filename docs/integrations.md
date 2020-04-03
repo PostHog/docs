@@ -1,6 +1,6 @@
 PostHog provides a bunch of libraries to send events from your app to your PostHog instance.
 
-### [JS](/integrations/JS-integration)
+### [JS](/integrations/js-integration)
 
 ### [Node](/integrations/node-integration)
 
@@ -8,6 +8,6 @@ PostHog provides a bunch of libraries to send events from your app to your PostH
 
 ### [Ruby](/integrations/ruby-integration)
 
-### [PHP](/integrations/PHP-integration)
+### [PHP](/integrations/php-integration)
 
 ### [REST API](/integrations/api)

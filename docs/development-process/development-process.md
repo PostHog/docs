@@ -18,8 +18,8 @@ At the moment we do not have good frontend tests. This is something we want, but
 
 
 ## How to QA
-[How to QA](/development-process/How-to-QA)
+[How to QA](/development-process/how-to-qa)
 
 
 ## How to release a new version 
-[Release new version](/development-process/Release-new-version)
+[Release new version](/development-process/release-new-version)
