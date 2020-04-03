@@ -125,18 +125,18 @@ posthog.register_once({
 PostHog JS offers a function to opt users out based on the cookie dialog.
 
 ```js
-posthog.opt_out_captureing();
+posthog.opt_out_capturing();
 ```
 
 The function call to see if a user has opted out
 
 ```js
-posthog.has_opted_out_captureing();
+posthog.has_opted_out_capturing();
 ```
 
 To opt a user back in
 ```js
-posthog.opt_in_captureing();
+posthog.opt_in_capturing();
 ```
 
 ## Reset after logout
