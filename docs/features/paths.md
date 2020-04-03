@@ -18,6 +18,6 @@ We are currently working on deepening this functionality. Today, it shows you a 
 
 ### Multiple domains
 
-Paths work across subdomains, even with the basic snippet installation. We see it's common for a website to be the landing page, then traffic to move into app.example.com, once a user starts interacting with the product. Just set up the root domain as the URL in your [tracking settings](https://github.com/PostHog/posthog/wiki/Snippet-installation).
+Paths work across subdomains, even with the basic snippet installation. We see it's common for a website to be the landing page, then traffic to move into app.example.com, once a user starts interacting with the product. Just set up the root domain as the URL in your [tracking settings](/snippet-installation).
 
 We recommend tracking across everything so you can understand where your most engaged users come from.

@@ -1,6 +1,6 @@
 # JS integration
 
-NB. You can just use a [snippet](https://github.com/PostHog/posthog/wiki/Snippet-installation) to start capturing events with our JS.
+NB. You can just use a [snippet](/Snippet-installation) to start capturing events with our JS.
 
 This page of the docs refers to our [JS library](https://github.com/PostHog/posthog-js).
 

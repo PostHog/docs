@@ -6,19 +6,42 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <meta name="description" content="Description">
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-<!--   <link rel="stylesheet" href="//unpkg.com/docsify/lib/themes/vue.css"> -->
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/themes/buble.css">
+  <link rel="stylesheet" href="//unpkg.com/docsify/lib/themes/vue.css">
+  <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/themes/buble.css"> -->
+  <script src="https://t.posthog.com/static/array.js"></script>
+    <script>
+    posthog.init('sTMFPsFhdP1Ssg', {api_host: 'https://t.posthog.com'})
+    </script>
+  <style>
+      h1, h2 {
+        border-bottom: 1px solid #eaecef;
+        padding-bottom: .3em
+      }
+      .markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4 {
+          margin-top: 24px;
+      }
+      body{
+        color: #37352f;
+        font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;
+        font-size: 1rem;
+      }
+    .anchor span { 
+        color: #37352f;
+    }
+    a { text-decoration: none; color: #007bff; }
+    </style>
 </head>
 <body>
   <div id="app"></div>
   <script>
     window.$docsify = {
-      coverpage: true,
+      coverpage: false,
       name: 'PostHog',
+      themeColor: '#007bff',
       repo: 'https://github.com/posthog/posthog/',
       loadSidebar: true,
-      subMaxLevel: 1,
-      maxLevel: 1,
+      subMaxLevel: 0,
+      maxLevel: 0,
       search: 'auto'
     }
   </script>

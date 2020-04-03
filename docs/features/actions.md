@@ -52,7 +52,7 @@ Page views can match urls containing a string or match exactly.
 
 ![page view action](https://posthog.com/wp-content/uploads/2020/03/Posthog-20.png)
 
-Custom Events can be sent to your PostHog instance by API we have several libraries to allow you to do [this](https://github.com/PostHog/posthog/wiki/Integrations).
+Custom Events can be sent to your PostHog instance by API we have several libraries to allow you to do [this](/Integrations).
 
 Frontend Elements can be selected directly on your site, click 'Select element on site'.
 

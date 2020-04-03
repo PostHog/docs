@@ -28,7 +28,7 @@ There are three key settings for a cohort:
 
 ![Three key cohort settings](https://posthog-static-files.s3.us-east-2.amazonaws.com/Documentation-Assets/Screenshot+2020-02-27+at+15.44.30.png)
 
-You can group users who have performed certain [actions](https://github.com/PostHog/posthog/wiki/Actions-configuration). You need to already have configured actions for that to work.
+You can group users who have performed certain [actions](/features/actions). You need to already have configured actions for that to work.
 
 You can also group users who have a certain property in common. Commonly, this used to combine users at a certain team, or from a certain marketing campaign via their UTM tags, or whatever other static property you need:
 

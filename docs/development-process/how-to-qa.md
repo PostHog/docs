@@ -18,16 +18,10 @@ We’ve found that almost every time we QA something, we find something that wou
 ## How to do QA
 
 1. Go to the pull request you want to QA. 
-
 2. Go to the Heroku test environment
-
     a. If the environment was already deployed, it should say "This branch was successfully deployed"
-
     b. if it says ‘This branch was not deployed’ go to the Heroku pipeline and click ‘Create review app’
-
     c. if the PR was submitted from a fork, you'll need to test the change locally. 
-
-
 3. Open the app, and add create a new account
 
 
@@ -43,4 +37,20 @@ To test user properties
 5. You can now go to `/people` and see that the user has an email set
 6. You can pass any other property in the `.set` function
 
+### Setting up a fork of the production database
 
+Sometimes you want to test against production data, but you have to run migrations. Obviously we can't do this against the production database, so we need to create a fork.
+
+```bash
+heroku addons:create heroku-postgresql:standard-0 --fork HEROKU_POSTGRESQL_TEAL --fast --app posthog
+```
+
+You can then follow the process by running
+```bash
+heroku pg:wait -a posthog
+```
+
+Then attach the database to the test app.
+```bash
+heroku addons:attach ADDON_NAME -a APP_NAME
+```

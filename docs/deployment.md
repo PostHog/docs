@@ -23,7 +23,7 @@ Heroku is the quickest way to get a production PostHog environment up-and-runnin
 
 We recommend getting at the very least a `hobby-dev` Postgres and Dyno for low volumes of events. If you run on the 'free' tier there will be a big lag if you're site hasn't been visited for a while.
 
-[Click here](https://github.com/PostHog/posthog/wiki/Upgrading-PostHog) for instructions on upgrading PostHog on Heroku to the latest version.
+[Click here](upgrading-PostHog) for instructions on upgrading PostHog on Heroku to the latest version.
 
 
 
@@ -32,7 +32,7 @@ We recommend getting at the very least a `hobby-dev` Postgres and Dyno for low v
 Using the [posthog/posthog:latest](https://hub.docker.com/r/posthog/posthog) Docker image.
 
 ### Running behind a proxy?
-See [running behind a proxy](https://github.com/PostHog/posthog/wiki/Running-behind-a-proxy) for instructions on how to set that up.
+See [running behind a proxy](/Running-behind-a-proxy) for instructions on how to set that up.
 
 ### Secret key
 

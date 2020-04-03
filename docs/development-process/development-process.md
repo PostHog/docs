@@ -18,8 +18,8 @@ At the moment we do not have good frontend tests. This is something we want, but
 
 
 ## How to QA
-[How to QA](https://github.com/PostHog/posthog/wiki/How-to-QA)
+[How to QA](/development-process/How-to-QA)
 
 
 ## How to release a new version 
-[Release new version](https://github.com/PostHog/posthog/wiki/Release-new-version)
+[Release new version](/development-process/Release-new-version)
