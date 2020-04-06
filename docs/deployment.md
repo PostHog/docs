@@ -16,7 +16,7 @@ This image has everything you need to try out PostHog locally! It will set up a 
 
 Heroku is the quickest way to get a production PostHog environment up-and-running.
 
-We recommend getting at the very least a `hobby-dev` Postgres and Dyno for low volumes of events. If you run on the 'free' tier there will be a big lag if you're site hasn't been visited for a while.
+We recommend getting at the very least a `hobby-dev` Postgres and Dyno for low volumes of events. If you run on the 'free' tier it will work, but there will be a big lag each time you visit the app if your site hasn't been visited for a while.
 
 [Click here](/upgrading-PostHog) for instructions on upgrading PostHog on Heroku to the latest version.
 
@@ -49,7 +49,7 @@ If you're running locally, make sure to add `DEBUG: 1` as an environment variabl
 
 ## Running behind a proxy?
 
-If you're running PostHog behind a proxy, there's a few more things you need to do to make sure PostHog (specifically the toolbar, which runs on your own site) works.
+If you're running PostHog behind a proxy, there are a few more things you need to do to make sure PostHog (specifically the toolbar, which runs on your own site) works.
 
 Make sure you have the `IS_BEHIND_PROXY` environment variable set to true
 
@@ -149,12 +149,12 @@ gunicorn posthog.wsgi --config gunicorn.config.py --log-file -
 
 ## Heroku
 
-Using a hobby-dev instance and hobby-dev postgres database (14$/month), you should be able to handle up to about 100k events/day, with about a 100 day history.
+Using a hobby-dev instance and hobby-dev postgres database ($14/month), you should be able to handle up to about 100k events/day, with about a 100 day history.
 
-With the next step up, 2-3x hobby-dev instances and standard-0 postgres (64$/month), you should be able to handle about 1M/events/day with over a year's worth of history.
+With the next step up, 2-3x hobby-dev instances and standard-0 postgres ($64/month), you should be able to handle about 1M/events/day with over a year's worth of history.
 
 ## AWS
 
 If running costs are a concern, AWS is likely to be a cheaper option, especially if you can commit to buy reserved instances for a year. This does come at the cost of ease-of-deployment.
 
-If you've deployed on AWS, let us know how and how much you're spending roughly so we can improve this guide (docs@posthog.com) :-).
+If you've deployed on AWS, let us know how and how much you're spending roughly so we can improve this guide. Submit a PR to the [docs repo](https://github.com/PostHog/docs) :-).
