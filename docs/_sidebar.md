@@ -1,7 +1,8 @@
-* Getting started
+* [Getting started](/deployment)
   * [Deployment](/deployment)
     * [Scaling PostHog](/scaling-posthog)
     * [Upgrading PostHog](/upgrading-posthog)
+    * [Log in with GitHub/GitLab](/log-in-with-github-gitlab)
   * [Snippet installation](/snippet-installation)
 * [Integrations](/integrations)
     * [JS](/integrations/js-integration)
