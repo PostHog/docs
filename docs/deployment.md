@@ -158,3 +158,17 @@ With the next step up, 2-3x hobby-dev instances and standard-0 postgres (64$/mon
 If running costs are a concern, AWS is likely to be a cheaper option, especially if you can commit to buy reserved instances for a year. This does come at the cost of ease-of-deployment.
 
 If you've deployed on AWS, let us know how and how much you're spending roughly so we can improve this guide (docs@posthog.com) :-).
+
+# SMTP credentials
+
+If you want to be able to send password reset emails from your instance, you need to set SMPTP credentials as env variables:
+
+```yaml
+EMAIL_HOST: [smtp server]
+EMAIL_PORT: 578
+EMAIL_HOST_USER: [username]
+EMAIL_HOST_PASSWORD: [password]
+EMAIL_USE_TLS: false
+EMAIL_USE_SSL: false
+DEFAULT_FROM_EMAIL: tim@posthog.com
+```
