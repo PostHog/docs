@@ -136,12 +136,15 @@ spec:
 # From source
 1. Make sure you have Python >= 3.7 and pip installed
 2. [Install Yarn](https://classic.yarnpkg.com/en/docs/install/#mac-stable)
-3. Run the following:
+3. Have a Postgres and Redis server running
+4. Run the following:
 ```bash
 git clone https://github.com/posthog/posthog.git
 yarn build
 pip install -r requirements.txt
-gunicorn posthog.wsgi --config gunicorn.config.py --log-file -
+export DATABASE_URL=''
+export REDIS_URL=''
+gunicorn posthog.wsgi --config gunicorn.config.py --log-file - & celery -A posthog worker
 ```
 
 
