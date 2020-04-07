@@ -16,11 +16,11 @@ We solve that - we let every person in the company have easy access to product a
 
 ## Getting started
 
-Note: If you want us to host it for you, or if you are a growth or enterprise customer and want to get in touch, email sales@posthog.com (we can provide more support, multi-user access and permissions, db integrations, audit logs, etc)
+Note: If you want us to host it for you, or if you are a larger customer / would like premium features and want to get in touch, email sales@posthog.com (we can provide more support, user permissions, a/b testing, db integrations, audit logs, etc)
 
 There are four steps to follow next:
 
-1. Deployment
-2. Snippet installation
-3. Actions configuration
-4. Optional: user data integration
+1. [Deployment](/deployment)
+2. [Snippet installation](/snippet-installation)
+3. [Actions configuration](/features/actions)
+4. [Optional: user data integration](/integrations)
