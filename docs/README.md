@@ -20,7 +20,7 @@ Note: If you want us to host it for you, or if you are a growth or enterprise cu
 
 There are four steps to follow next:
 
-1. Deployment
-2. Snippet installation
-3. Actions configuration
-4. Optional: user data integration
+1. [Deployment](/deployment)
+2. [Snippet installation](/snippet-installation)
+3. [Actions configuration](/features/actions)
+4. [Optional: user data integration](/integrations)
