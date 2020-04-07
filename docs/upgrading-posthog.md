@@ -23,6 +23,29 @@ Upgrading Docker depends on how you've deployed Docker.
 
 If you've pinned a version, see [CHANGELOG.md](https://github.com/PostHog/posthog/blob/master/CHANGELOG.md) for the latest version.
 
+## Upgrading from before 1.0.11?
+
+PostHog is now using Redis with a worker to process events and other background tasks. If you're getting a "REDIS_URL is required" error, you'll need to setup a redis server and run the worker process. For Heroku, this should happen automatically.
+
+If you're using a docker-compose file, either pull the latest version from master, or add the following to your docker-compose file:
+
+```yaml
+  redis:
+    image: "redis:alpine"
+    container_name: posthog_redis
+  web:
+    ...
+    environment:
+      ...
+      REDIS_URL: "redis://redis:6379/"
+    depends_on:
+      - db
+      - redis
+    links:
+      - db:db
+      - redis:redis
+```
+
 
 ## Upgrading from before 3 March 2020?
 
