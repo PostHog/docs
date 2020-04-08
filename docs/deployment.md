@@ -144,8 +144,14 @@ yarn build
 pip install -r requirements.txt
 export DATABASE_URL=''
 export REDIS_URL=''
+python manage.py runserver
+python manage.py collectstatic
+```
+5. To start the server and worker, run
+```bash
 gunicorn posthog.wsgi --config gunicorn.config.py --log-file - & celery -A posthog worker
 ```
+You might want to use something like Supervisor to keep this command running
 
 
 # How much will running PostHog cost me?
