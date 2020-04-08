@@ -55,7 +55,7 @@ If you're using a docker-compose file, either pull the latest version from maste
 
 ## Upgrading from before 3 March 2020?
 
-If you last updated PostHog before 3 March 2020, AND you have a lot of events, there is one migrations (0027) that might take a long time.
+If you last updated PostHog before 3 March 2020, AND you have a lot of events, there is one migration (0027) that might take a long time.
 
 To avoid this, _before_ you migrate, run `python manage.py migrate_elementgroup` to pre-migrate elements across.
 
