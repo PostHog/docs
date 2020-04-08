@@ -25,13 +25,9 @@ If you've pinned a version, see [CHANGELOG.md](https://github.com/PostHog/postho
 
 ## Upgrading from before 1.0.11?
 
-PostHog is now using Redis with a worker to process events and other background tasks. If you're getting a "REDIS_URL is required" error, you'll need to setup a redis server and run the worker process.
+PostHog is now using Redis with a worker to process events and other background tasks. If you're getting a "REDIS_URL is required" error or you see "Configuration Error" in the interface, you'll need to setup a redis server and run the worker process. 
 
-### Heroku
-
-You can upgrade Heroku as per normal. It should automatically provision a free Redis instance and set up a worker. However, you might still have to manually provision a worker Dyno by going to "Resources".
-
-### Docker-compose
+For Heroku deployments, a new Heroku Redis addon should be enabled automatically with the free plan. We recommend to switch to at least the first paid plan (premium-0) to enable [persistence](https://devcenter.heroku.com/articles/heroku-redis#persistence) and protect yourself against data loss. You will also see a new dyno type `worker`, which may or may not be deployed automatically. You will need to deploy at least one `worker` dyno for the background tasks to work.
 
 If you're using a docker-compose file, either pull the latest version from master, or add the following to your docker-compose file:
 
