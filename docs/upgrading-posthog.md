@@ -29,7 +29,7 @@ PostHog is now using Redis with a worker to process events and other background 
 
 ### Heroku
 
-You can upgrade Heroku as per normal. It should automatically provision a free Redis instance and set up a worker. You might still have to manually turn the worker on!
+You can upgrade Heroku as per normal. It should automatically provision a free Redis instance and set up a worker. However, you might still have to manually provision a worker Dyno by going to "Resources".
 
 ### Docker-compose
 
