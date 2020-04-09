@@ -12,6 +12,7 @@
     * [PHP](/integrations/php-integration)
     * [Go](/integrations/go-integration)
     * [API](/integrations/api)
+    * [Slack](/integrations/slack)
 * [Features](/features)
     * [Dashboards](/features/dashboards)
     * [Trends](/features/trends)
