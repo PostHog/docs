@@ -34,6 +34,11 @@ import { posthog } from 'posthog-js';
 posthog.init("[your-token]", {api_host: 'https://[your-instance]'});
 ```
 
+If you don't want to send a bunch of test data while you're developing, you could do
+```js
+window.location.href.indexOf('127.0.0.1') === -1 && posthog.init("[your-token]", {api_host: 'https://[your-instance]'})
+```
+
 # Usage
 ## Autocapture
 
