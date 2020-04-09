@@ -152,6 +152,12 @@ If a user is logged out, you probably want to call reset to unset any distinct_i
 posthog.reset();
 ```
 
+If you _also_ want to reset device_id, you can set true
+
+```js
+posthog.reset(true);
+```
+
 ## Complete signup psuedocode
 
 As an example, here is how to put some of the above concepts together.
