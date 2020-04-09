@@ -18,3 +18,5 @@ Feel free to use [this image](https://user-images.githubusercontent.com/53387/78
 ![image](https://user-images.githubusercontent.com/53387/78897251-2bec7a80-7a72-11ea-9dd5-ac40afe13606.png)
 
 5. Rejoice for you did good!
+
+![image](https://user-images.githubusercontent.com/53387/78906013-1a5d9f80-7a7f-11ea-94ec-0d609c346384.png)
