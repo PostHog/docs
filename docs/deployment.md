@@ -46,6 +46,7 @@ If you run your Postgres database somewhere else (like RDS, or just a different 
 
 If you're running locally, make sure to add `DEBUG: 1` as an environment variable, otherwise you'll get stuck in an infinite loop of SSL redirects.
 
+!> Getting a blank screen running locally? PostHog assumes you want to use SSL and will redirect you to `https://...`. To avoid this, set `DISABLE_SECURE_SSL_REDIRECT=1`
 
 ## Running behind a proxy?
 
