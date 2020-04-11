@@ -43,7 +43,7 @@ window.location.href.indexOf('127.0.0.1') === -1 && posthog.init("[your-token]",
 ## Autocapture
 
 Just by calling `posthog.init` above, you're already automatically capturing
-- **pageviews**, including URLS
+- **pageviews**, including the url
 - **autocaptured events**, any click or change of input or submission of `a`, `button`, `form`, `input`, `select`, `textarea`, `label`
 
 ## Ignore/censure elements
