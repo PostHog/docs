@@ -57,6 +57,8 @@ PostHog does lots of things to make sure it doesn't capture any sensitive data f
 
 We recommend putting PostHog both on your homepage and your application if applicable. That means you'll be able to follow a user from the moment they come onto your website, all the way through signup and actually using your product.
 
+?> PostHog automatically sets a cross-domain cookie, so if your website is `yourapp.com` and your app is on `app.yourapp.com` users will be followed when they go from one to the other.
+
 ## Sending events
 
 This allows you to send more context than the basic event info that PostHog captures whenever a user does something. In that case, you can send an event with any metadata you may have.
