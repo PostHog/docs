@@ -150,7 +150,7 @@ python manage.py collectstatic
 ```
 5. To start the server and worker, run
 ```bash
-gunicorn posthog.wsgi --config gunicorn.config.py --log-file - & celery -A posthog worker
+./bin/docker-server & ./bin/docker-worker
 ```
 You might want to use something like Supervisor to keep this command running
 
