@@ -81,7 +81,22 @@ Secret keys are used to encrypt cookies, password reset emails [and other things
 openssl rand -hex 32
 ```
 
-# K8s
+# Helm Charts
+
+We maintain a [helm chart for PostHog](https://github.com/PostHog/charts/tree/master/posthog).
+
+To install the latest version:
+
+```shell script
+helm repo add posthog "git+https://github.com/posthog/charts@posthog?ref=1.0.4&sparse=0"
+helm install posthog posthog/posthog
+```
+
+See the [README](https://github.com/PostHog/charts/blob/master/posthog/README.md) or 
+[`values.yaml`](https://github.com/PostHog/charts/blob/master/posthog/values.yaml)
+for configuration options.
+
+# Raw K8s
 
 Here's an example configmap you can use
 ```yaml
