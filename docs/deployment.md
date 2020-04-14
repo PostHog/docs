@@ -81,7 +81,7 @@ Secret keys are used to encrypt cookies, password reset emails [and other things
 openssl rand -hex 32
 ```
 
-# Helm Charts
+# Helm Charts and Kubernetes
 
 We maintain a [helm chart for PostHog](https://github.com/PostHog/charts/tree/master/charts/posthog).
 
@@ -96,59 +96,6 @@ helm install posthog posthog/posthog
 See the [README](https://github.com/PostHog/charts/blob/master/charts/posthog/README.md) or 
 [`values.yaml`](https://github.com/PostHog/charts/blob/master/charts/posthog/values.yaml)
 for configuration options.
-
-# Raw K8s
-
-Here's an example configmap you can use
-```yaml
-kind: Deployment
-apiVersion: apps/v1
-metadata:
-  name: posthog
-spec:
-  selector:
-    matchLabels:
-      app: posthog
-  template:
-    metadata:
-      labels:
-        app: posthog
-    spec:
-      containers:
-      - name: posthog
-        image: posthog/posthog:latest
-        ports:
-        - containerPort: 8000
-        resources:
-          limits:
-            cpu: 95m
-            memory: 285Mi
-        env:
-        - name: IS_DOCKER
-          value: "true"
-        - name: SECRET_KEY
-          value: "<enter secret key here>"
-        - name: DATABASE_URL
-          valueFrom:
-            secretKeyRef:
-              key: database-url
-              name: posthog
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: posthog
-  labels:
-    app: posthog
-spec:
-  type: NodePort
-  selector:
-    app: posthog
-  ports:
-  - name: http
-    port: 80
-    targetPort: 8000
-```
 
 # From source
 1. Make sure you have Python >= 3.7 and pip installed
