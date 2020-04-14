@@ -83,17 +83,18 @@ openssl rand -hex 32
 
 # Helm Charts
 
-We maintain a [helm chart for PostHog](https://github.com/PostHog/charts/tree/master/posthog).
+We maintain a [helm chart for PostHog](https://github.com/PostHog/charts/tree/master/charts/posthog).
 
 To install the latest version:
 
 ```shell script
-helm repo add posthog "git+https://github.com/posthog/charts@posthog?ref=1.0.4&sparse=0"
+helm repo add posthog https://posthog.github.io/charts/
+helm repo update
 helm install posthog posthog/posthog
 ```
 
-See the [README](https://github.com/PostHog/charts/blob/master/posthog/README.md) or 
-[`values.yaml`](https://github.com/PostHog/charts/blob/master/posthog/values.yaml)
+See the [README](https://github.com/PostHog/charts/blob/master/charts/posthog/README.md) or 
+[`values.yaml`](https://github.com/PostHog/charts/blob/master/charts/posthog/values.yaml)
 for configuration options.
 
 # Raw K8s
