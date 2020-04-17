@@ -1,6 +1,6 @@
-Trends are a very powerful way to visualize how actions are varying over time.
+Trends are a very powerful way to visualize how actions or events are varying over time.
 
-These are useful for monitoring which parts of your products are being used repeatedly.
+These are useful for monitoring which parts of your products are being used repeatedly, how usage is changing as well as the engagement levels of your users.
 
 You can watch our short Trends training videos here:
 
@@ -11,25 +11,50 @@ You can watch our short Trends training videos here:
 
 Go to ’Trends’ in the left hand navigation:
 
-![Left hand navigation - trends highlighted](https://posthog.com/wp-content/uploads/2020/03/Posthog.png)
+![Left hand navigation - trends highlighted](https://posthog.com/wp-content/uploads/2020/04/Posthog-13.png)
 
-Select the actions you want to see trends of in the menu
+Select the actions or events you want to see trends of in the menu
 
-![Trends, action selection](https://posthog.com/wp-content/uploads/2020/03/Posthog-1.png)
+![Trends, action and event selection](https://posthog.com/wp-content/uploads/2020/04/trends-actions-events.gif)
 
 You can now see the trend in these actions over time.
 
-![Action trends](https://posthog.com/wp-content/uploads/2020/03/Posthog-2.png)
+![Action trends](https://posthog.com/wp-content/uploads/2020/04/Posthog-14.png)
+
+Dotted lines show data collected so far but that which is not determined by the time interval selected.
+
 
 ## Trend filtering
 
 There are a few ways to filter this information.
 
-Firstly, if you have many actions defined, you can just select a handful at a time by using the filters on the right hand side.
+- Date range
+- Time interval
+- Graphical Display
+- Property
 
-You can also filter this data by time, and you can display it as a table or as a line chart:
+Date range, time intervals and the graphical display can be changed at the top of the graph:
 
-![Trend filtering](https://posthog.com/wp-content/uploads/2020/02/Screenshot-2020-02-09-at-17.30.22.png)
+![Trend filtering](https://posthog.com/wp-content/uploads/2020/04/Posthog-15.png)
+
+The date range can be selected as an actual date range or common time intervals like the last week or the last 90 days, the graphical display can be displayed as a line chart, table or pie graph. 
+
+Depending on your segmentation and other filters not all graphical displays will be available.
+
+Time intervals can be by the minute, hour, day, week or month
+
+![interval gif](https://posthog.com/wp-content/uploads/2020/04/interval-time-trends.gif)
+
+Filtering by property can be selected underneath the actions or events you have selected. 
+
+![Filter by property](https://posthog.com/wp-content/uploads/2020/04/filterby-property.gif)
+
+### Filtering Trend graphs by Daily Active Users (DAUs)
+
+When selecting actions or trends PostHog will display the total count of those actions or events. You also have the option to filter this by daily active users, which will give you a count of unique users who have completed that action/event instead of the total count. 
+
+![Total or DAU](https://posthog.com/wp-content/uploads/2020/04/Posthog-16.png)
+
 
 ## Trend segmentation
 
