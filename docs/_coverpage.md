@@ -2,7 +2,7 @@
 
 ![logo](_media/posthog-logo-svg.svg)
 
-# PostHog Docs <small>1.0.9</small>
+# PostHog Docs <small>1.0.10</small>
 
 > Open source product analytics.
 
