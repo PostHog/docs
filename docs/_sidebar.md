@@ -16,6 +16,7 @@
 * [Features](/features)
     * [Dashboards](/features/dashboards)
     * [Trends](/features/trends)
+        * [Sessions](/features/sessions)
     * [Events](/features/events)
     * [Actions](/features/actions)
       * [Live actions](/features/live-actions)
