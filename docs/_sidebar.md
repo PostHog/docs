@@ -26,4 +26,4 @@
     * [Inviting your team](/inviting-your-team)
 * [Product direction](/product-direction)
     * [Roadmap](/roadmap) 
-* [Development process](/development-process/development-process)
+* [Contributing to PostHog](/contributing)
