@@ -27,3 +27,4 @@
 * [Product direction](/product-direction)
     * [Roadmap](/roadmap) 
 * [Contributing to PostHog](/contributing)
+    * [Developing locally](/developing-locally)
