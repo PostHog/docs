@@ -32,10 +32,10 @@ PHGAnalyticsConfiguration *configuration = [PHGPostHogConfiguration configuratio
 
 // self-hosted
 PHGAnalyticsConfiguration *configuration = [PHGPostHogConfiguration configurationWithApiKey:@"YOUR_API_KEY" 
-                                                                                       host:@"https://app.posthog.com"];
+                                                                            host:@"https://app.posthog.com"];
 
-configuration.captureApplicationLifecycleEvents = YES; // Enable this to record certain application events automatically!
-configuration.recordScreenViews = YES; // Enable this to record screen views automatically!
+configuration.captureApplicationLifecycleEvents = YES; // Record certain application events automatically!
+configuration.recordScreenViews = YES; // Record screen views automatically!
 
 [PHGPostHog setupWithConfiguration:configuration];
 ```
@@ -51,8 +51,8 @@ let config = PHGPostHogConfiguration(apiKey: "YOUR_API_KEY")
 // self-hosted
 let configuration = PHGPostHogConfiguration(apiKey: "YOUR_API_KEY", host: "http://app.posthog.com")
 
-configuration.captureApplicationLifecycleEvents = YES; // Enable this to record certain application events automatically!
-configuration.recordScreenViews = YES; // Enable this to record screen views automatically!
+configuration.captureApplicationLifecycleEvents = YES; // Record certain application events automatically!
+configuration.recordScreenViews = YES; // Record screen views automatically!
 
 PHGPostHog.setup(with: configuration)
 let posthog = PHGPostHog.shared()
@@ -60,7 +60,7 @@ let posthog = PHGPostHog.shared()
 
 ## Making calls
 
-## Identify
+### Identify
 
 When you start tracking events with PostHog, each user gets an anonymous ID that is used to identify them in the system.
 In order to link this anonymous user with someone from your database, use the `identify` call. 
@@ -84,7 +84,8 @@ For example:
 
 ```swift
 // in swift
-posthog.identify("user_id_from_your_database", properties: ["name": "Peter Griffin", "email": "peter@familyguy.com"])
+posthog.identify("user_id_from_your_database", 
+          properties: ["name": "Peter Griffin", "email": "peter@familyguy.com"])
 ```
 
 The most obvious place to make this call is whenever a user signs up, or when they update their information.
@@ -177,9 +178,10 @@ The `configuration` element contains several other things you can toggle:
 ```objective-c
 /**
  * Whether the posthog client should use location services.
- * If `YES` and the host app hasn't asked for permission to use location services then the user will be presented with 
- * an alert view asking to do so. `NO` by default. If `YES`, please make sure to add a description for
- * `NSLocationAlwaysUsageDescription` in your `Info.plist` explaining why your app is accessing Location APIs.
+ * If `YES` and the host app hasn't asked for permission to use location services then the user will be  
+ * presented with an alert view asking to do so. `NO` by default. If `YES`, please make sure to add a 
+ * description for `NSLocationAlwaysUsageDescription` in your `Info.plist` explaining why your app is 
+ * accessing Location APIs.
  */
 configuration.shouldUseLocationServices = NO;
 
@@ -189,8 +191,8 @@ configuration.shouldUseLocationServices = NO;
 configuration.enableAdvertisingCapturing = YES;
 
 /**
- * The number of queued events that the posthog client should flush at. Setting this to `1` will not queue any events 
- * and will use more battery. `20` by default.
+ * The number of queued events that the posthog client should flush at. Setting this to `1` will not queue  
+ * any events and will use more battery. `20` by default.
  */
 configuration.flushAt = 20;
 
@@ -203,29 +205,29 @@ configuration.flushAt = 20;
 configuration.flushInterval = 30;
 
 /**
- * The maximum number of items to queue before starting to drop old ones. This should be a value greater than zero, 
- * the behaviour is undefined otherwise. `1000` by default.
+ * The maximum number of items to queue before starting to drop old ones. This should be a value greater 
+ * than zero, the behaviour is undefined otherwise. `1000` by default.
  */
 configuration.maxQueueSize = 1000;
 
 /**
- * Whether the posthog client should automatically make a capture call for application lifecycle events, such as 
- * "Application Installed", "Application Updated" and "Application Opened".
+ * Whether the posthog client should automatically make a capture call for application lifecycle events,  
+ * such as "Application Installed", "Application Updated" and "Application Opened".
  */
 configuration.captureApplicationLifecycleEvents = NO; 
 
 /**
- * Whether the posthog client should record bluetooth information. If `YES`, please make sure to add a description 
- * for `NSBluetoothPeripheralUsageDescription` in your `Info.plist` explaining explaining why your app is accessing
- * Bluetooth APIs. `NO` by default.
+ * Whether the posthog client should record bluetooth information. If `YES`, please make sure to add a  
+ * description for `NSBluetoothPeripheralUsageDescription` in your `Info.plist` explaining explaining why
+ * your app is accessing Bluetooth APIs. `NO` by default.
  */
 configuration.shouldUseBluetooth = NO;
 
 /**
- * Whether the posthog client should automatically make a screen call when a view controller is added to a view
- * hierarchy. Because the underlying implementation uses method swizzling, we recommend initializing the posthog 
- * client as early as possible (before any screens are displayed), ideally during the Application delegate's 
- * applicationDidFinishLaunching method.
+ * Whether the posthog client should automatically make a screen call when a view controller is added to
+ * a view hierarchy. Because the underlying implementation uses method swizzling, we recommend initializing 
+ * the posthog client as early as possible (before any screens are displayed), ideally during the  
+ * Application delegate's applicationDidFinishLaunching method.
  */
 configuration.recordScreenViews = NO;
 
