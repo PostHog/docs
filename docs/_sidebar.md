@@ -11,7 +11,7 @@
     * [Ruby](/integrations/ruby-integration)
     * [PHP](/integrations/php-integration)
     * [Go](/integrations/go-integration)
-    * [iOS](/integrations/ios**-integration)
+    * [iOS](/integrations/ios-integration)
     * [API](/integrations/api)
     * [Slack](/integrations/slack)
 * [Features](/features)
