@@ -27,12 +27,15 @@ github "posthog/posthog-ios"
 ### With Objective-C
 
 ```objective-c
+#import <PostHog/PHGPostHog.h>
+#import <PostHog/PHGPostHogConfiguration.h>
+
 // on posthog.com
-PHGAnalyticsConfiguration *configuration = [PHGPostHogConfiguration configurationWithApiKey:@"YOUR_API_KEY"];
+PHGPostHogConfiguration *configuration = [PHGPostHogConfiguration configurationWithApiKey:@"YOUR_API_KEY"];
 
 // self-hosted
-PHGAnalyticsConfiguration *configuration = [PHGPostHogConfiguration configurationWithApiKey:@"YOUR_API_KEY" 
-                                                                            host:@"https://app.posthog.com"];
+PHGPostHogConfiguration *configuration = [PHGPostHogConfiguration configurationWithApiKey:@"YOUR_API_KEY" 
+                                                                          host:@"https://app.posthog.com"];
 
 configuration.captureApplicationLifecycleEvents = YES; // Record certain application events automatically!
 configuration.recordScreenViews = YES; // Record screen views automatically!
