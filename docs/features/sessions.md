@@ -32,4 +32,4 @@ You can filter average session length by the same properties as you can in 'Tren
 
 ## How are sessions calculated?
 
-Sessions are calculated as soon as an event is recorded by a user, they end at midnight or if it has been 30 minutes since previous activity, whatever comes first.
+Sessions are calculated as soon as an event is recorded by a user, they end once there has been 30 minutes of inactivity.
