@@ -117,6 +117,17 @@ python manage.py collectstatic
 ```
 You might want to use something like Supervisor to keep this command running
 
+# Restrict access by IP
+
+You can restrict access to PostHog by IP by passing `ALLOWED_IP_BLOCKS`. This is a comma separated list, and can either be individual IP addresses or subnets. For example:
+
+```bash
+ALLOWED_IP_BLOCKS=192.168.0.0/31,127.0.0.0/25,128.0.0.1
+```
+
+If you try to access your PostHog instance with a different IP, you will get an error message.
+
+This restriction does not apply to the endpoints used to send events, like `batch`, `capture` etc.
 
 # How much will running PostHog cost me?
 
