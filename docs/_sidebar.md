@@ -14,6 +14,8 @@
     * [iOS](/integrations/ios-integration)
     * [API](/integrations/api)
     * [Slack](/integrations/slack)
+    * [Community](/integrations/community)
+      * [Gatsby](/integrations/gatsby)
 * [Features](/features)
     * [Dashboards](/features/dashboards)
     * [Trends](/features/trends)
