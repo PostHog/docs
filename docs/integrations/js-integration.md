@@ -30,7 +30,7 @@ npm install --save posthog-js
 
 And then include it in your files
 ```js
-import { posthog } from 'posthog-js';
+import posthog from 'posthog-js';
 posthog.init("[your-token]", {api_host: 'https://[your-instance]'});
 ```
 
