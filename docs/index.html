@@ -36,6 +36,26 @@
         color: #37352f;
     }
     a { text-decoration: none; color: #007bff; }
+  .screenshot::before {
+    content: " ";
+    height: 32px;
+    width: 100%;
+    background-image: url('/_media/bar.svg');
+    display: block;
+    background-size: cover;
+    margin-top: -32px;
+  }
+  .screenshot {
+    /*position: absolute;*/
+    box-shadow: rgba(0, 0, 0, 0.55) 0px 20px 68px 0px;
+    border-radius: 8px;
+    padding-top: 32px;
+    overflow: hidden;
+  
+  }
+  .screenshot img {
+    display: block;
+  }
     </style>
     <title>PostHog documentation</title>
 </head>
