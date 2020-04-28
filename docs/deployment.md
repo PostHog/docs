@@ -129,6 +129,19 @@ If you try to access your PostHog instance with a different IP, you will get an 
 
 This restriction does not apply to the endpoints used to send events, like `batch`, `capture` etc.
 
+If you're behind a proxy, you need to either set trusted proxies
+```bash
+TRUSTED_PROXIES=ip1,ip2
+```
+
+Or you can implicitely trust all proxies.
+
+```bash
+TRUST_ALL_PROXIES=true
+```
+
+!> When using `TRUST_ALL_PROXIES`, make sure your proxy (like nginx) is setting X-Forwarded-For, like in the example above. If not, it would still be possible to spoof your IP address
+
 # How much will running PostHog cost me?
 
 ## Heroku
