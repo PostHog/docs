@@ -12,6 +12,7 @@
     * [PHP](/integrations/php-integration)
     * [Go](/integrations/go-integration)
     * [iOS](/integrations/ios-integration)
+    * [Android](/integrations/android-integration)
     * [API](/integrations/api)
     * [Slack](/integrations/slack)
     * [Community](/integrations/community)
