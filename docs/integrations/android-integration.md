@@ -57,11 +57,11 @@ like segment users by these properties.
 An identify call requires:
 
 * `distinctId` which uniquely identifies your user in your database
-* `properties` with a dictionary with key: value pairs
+* `userProperties` with a dictionary with key: value pairs
 
 ```java
 PostHog.with(this)
-       .identify(distinctID, new Traits()
+       .identify(distinctID, new Properties()
                                 .putValue("name", "My Name")
                                 .putValue("email", "user@posthog.com"));
 ```
