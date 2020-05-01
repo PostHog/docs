@@ -1,5 +1,7 @@
 # Deployment
 
+?> If you don't want to host PostHog yourself, you can [sign up for an account instead](https://app.posthog.com/signup) and let us do the hosting for you.
+
 # One-line docker preview
 
 ```bash
