@@ -73,7 +73,6 @@ You need to make sure your proxy server is sending X-Forwarded-For headers. For 
 ### Infinite redirect
 
 Some users have reported getting infinite redirects running behind a proxy. You can set the `DISABLE_SECURE_SSL_REDIRECT` variable to make PostHog run using http.
-See [running behind a proxy](/running-behind-a-proxy) for instructions on how to set that up.
 
 ## Secret key
 
