@@ -123,7 +123,7 @@ We maintain a CloudFormation [config](https://github.com/fuziontech/posthog/blob
 
 For an in depth how-to on CloudFormations check out the [AWS Docs](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/GettingStarted.Walkthrough.html)
 
-The gist is this though:
+The gist is this:
 1. Grab YAML Configs from [here](https://github.com/fuziontech/posthog/blob/master/deployment/aws/ecs/combined.yaml)
 2. Go to the CloudFormation page on your AWS [console](https://console.aws.amazon.com/cloudformation/)
 3. Click Create `Stack -> With New Resources (standard)`
