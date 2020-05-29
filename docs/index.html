@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <script>
+    window.location.href = 'https://posthog.com/docs/' + window.location.hash.replace('#/', '')
+  </script>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <meta property="og:site_name" content="PostHog | Open source product analytics">
@@ -13,54 +16,8 @@
   <link rel="apple-touch-icon-precomposed" href="https://posthog.com/wp-content/uploads/2020/01/cropped-Frame-1-180x180.png"/>
   <meta name="msapplication-TileImage" content="https://posthog.com/wp-content/uploads/2020/01/cropped-Frame-1-270x270.png"/>
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <link rel="stylesheet" href="//unpkg.com/docsify/lib/themes/vue.css">
-  <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/themes/buble.css"> -->
-  <script>
-    !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.async=!0,p.src=s.api_host+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="capture identify alias people.set people.set_once set_config register register_once unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
-    posthog.init('sTMFPsFhdP1Ssg', {api_host: 'https://app.posthog.com'})
-  </script>
-  <style>
-      h1, h2 {
-        border-bottom: 1px solid #eaecef;
-        padding-bottom: .3em
-      }
-      .markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4 {
-          margin-top: 24px;
-      }
-      body{
-        color: #37352f;
-        font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;
-        font-size: 1rem;
-      }
-    .anchor span { 
-        color: #37352f;
-    }
-    a { text-decoration: none; color: #007bff; }
-    </style>
-    <title>PostHog documentation</title>
 </head>
 <body>
-  <div id="app"></div>
-  <script>
-    window.$docsify = {
-      coverpage: false,
-      name: 'PostHog',
-      themeColor: '#007bff',
-      repo: 'https://github.com/posthog/posthog/',
-      loadSidebar: true,
-      subMaxLevel: 1,
-      maxLevel: 1,
-      search: 'auto'
-    }
-  </script>
-  <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/prismjs/components/prism-bash.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/prismjs/components/prism-python.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/prismjs/components/prism-nginx.min.js"></script>
-  <script src="//unpkg.com/docsify-pagination/dist/docsify-pagination.min.js"></script>
-  <script src="https://unpkg.com/docsify-copy-code@2"></script>
-
 
 </body>
 </html>
