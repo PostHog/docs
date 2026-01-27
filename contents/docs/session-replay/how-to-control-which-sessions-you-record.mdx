@@ -116,7 +116,7 @@ Our recommendation is to start with capturing 100% of sessions and decrease it a
 
 Sampling is deterministic based on the session ID. When a new session starts, PostHog converts the session ID into a number between 0 and 1 using a hash function. This number is then compared to your configured sample rate (for example, 0.1 for 10% or 0.2 for 20%).
 
-If the generated number is less than or equal to the sample rate, the session is recorded. Because the same session ID always produces the same number, the decision to record or not is consistent throughout the session's lifetime.
+If the generated number is less than the sample rate, the session is recorded. Because the same session ID always produces the same number, the decision to record or not is consistent throughout the session's lifetime.
 
 This means:
 - Sessions are selected based on their ID, not by time period or order
