@@ -1,0 +1,223 @@
+---
+title: Call the MCP server directly over HTTP
+sidebarTitle: Direct API usage
+sidebar: Docs
+showTitle: true
+---
+
+Most people install the PostHog [MCP server](/docs/model-context-protocol) into a client like Claude Code, Cursor, or Codex, and let that client talk to the server. This page is for the other case: you want to call the server yourself.
+
+Call the server directly when you want to:
+
+- Script against PostHog from your own code or a CI job.
+- See the exact requests your agent sends, so you can debug them.
+
+The server speaks the [Model Context Protocol](https://modelcontextprotocol.io/introduction) over the [Streamable HTTP transport](https://modelcontextprotocol.io/specification/2025-06-18/basic/transports#streamable-http). Every request is a JSON-RPC 2.0 message that you `POST` to `https://mcp.posthog.com/mcp`. This page walks through one full session with `curl`: create a key, open a session, list the tools, and call the `exec` tool.
+
+> Prefer an SDK for real work. The [MCP TypeScript SDK](https://github.com/modelcontextprotocol/typescript-sdk) runs the session handshake for you. The [MCP server README](https://github.com/PostHog/posthog/tree/master/services/mcp#minimal-node-client-streamable-http) has a ready Node example. Use raw `curl` to learn the protocol; use an SDK to build on it.
+
+## Step 1: Create a personal API key
+
+The server authenticates every request with a personal API key sent as a Bearer token. The same key works for a client install and for a direct HTTP call.
+
+1. Open the [personal API keys settings](https://us.posthog.com/settings/user-api-keys?preset=mcp_server) and create a key with the **MCP Server** preset. The preset scopes the key to one project.
+2. Copy the key. It starts with `phx_`.
+
+Save the key as an environment variable, so the examples below can read it:
+
+```bash
+export POSTHOG_MCP_KEY="phx_your_api_key_here"
+```
+
+> **EU users:** send your requests to `https://mcp-eu.posthog.com/mcp` instead. The rest of this page is the same.
+
+## Step 2: Open a session
+
+Streamable HTTP is session based. You start a session with an `initialize` request. The server returns a session ID in the `Mcp-Session-Id` response header, and you send that ID on every later request.
+
+Two headers are mandatory on every call:
+
+- `Authorization: Bearer $POSTHOG_MCP_KEY`
+- `Accept: application/json, text/event-stream`
+
+The server streams its reply as [server-sent events](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events), so each response body starts with a `data:` line that holds the JSON-RPC result.
+
+Send the `initialize` request and print the response headers with `-i`:
+
+```bash
+curl -i https://mcp.posthog.com/mcp \
+  -H "Authorization: Bearer $POSTHOG_MCP_KEY" \
+  -H "Accept: application/json, text/event-stream" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "initialize",
+    "params": {
+      "protocolVersion": "2025-06-18",
+      "capabilities": {},
+      "clientInfo": { "name": "my-script", "version": "1.0.0" }
+    }
+  }'
+```
+
+Read the session ID from the response header and save it:
+
+```bash
+export MCP_SESSION="the-mcp-session-id-header-value"
+```
+
+Then confirm the session with an `initialized` notification. A notification has no `id`, and the server replies with `202 Accepted` and no body:
+
+```bash
+curl https://mcp.posthog.com/mcp \
+  -H "Authorization: Bearer $POSTHOG_MCP_KEY" \
+  -H "Accept: application/json, text/event-stream" \
+  -H "Content-Type: application/json" \
+  -H "Mcp-Session-Id: $MCP_SESSION" \
+  -d '{ "jsonrpc": "2.0", "method": "notifications/initialized" }'
+```
+
+## Step 3: List the tools
+
+Call `tools/list` to see the tools the server exposes. Send the session ID from Step 2:
+
+```bash
+curl https://mcp.posthog.com/mcp \
+  -H "Authorization: Bearer $POSTHOG_MCP_KEY" \
+  -H "Accept: application/json, text/event-stream" \
+  -H "Content-Type: application/json" \
+  -H "Mcp-Session-Id: $MCP_SESSION" \
+  -d '{ "jsonrpc": "2.0", "id": 2, "method": "tools/list", "params": {} }'
+```
+
+The result lists one tool named `exec`:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 2,
+  "result": {
+    "tools": [
+      {
+        "name": "exec",
+        "description": "Run any PostHog command; its `command` description has the syntax.",
+        "inputSchema": {
+          "type": "object",
+          "properties": { "command": { "type": "string" } },
+          "required": ["command"]
+        }
+      }
+    ]
+  }
+}
+```
+
+By default the server runs in **CLI mode**, so it exposes the single `exec` tool instead of one tool per PostHog action. You pass `exec` a CLI-style command string, and it routes to the right PostHog tool. This keeps the tool list small. To get one tool per action instead, add `?mode=tools` to the URL — see [choosing a tool mode](/docs/model-context-protocol/faq#choosing-a-tool-mode).
+
+## Step 4: Call a tool
+
+Call a tool with `tools/call`. Set `params.name` to `exec` and put the command string in `params.arguments.command`. This example searches for feature flag tools:
+
+```bash
+curl https://mcp.posthog.com/mcp \
+  -H "Authorization: Bearer $POSTHOG_MCP_KEY" \
+  -H "Accept: application/json, text/event-stream" \
+  -H "Content-Type: application/json" \
+  -H "Mcp-Session-Id: $MCP_SESSION" \
+  -d '{
+    "jsonrpc": "2.0",
+    "id": 3,
+    "method": "tools/call",
+    "params": {
+      "name": "exec",
+      "arguments": { "command": "search feature-flag" }
+    }
+  }'
+```
+
+The result holds the tool output as text content:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 3,
+  "result": {
+    "content": [
+      { "type": "text", "text": "feature-flag-get-all — List all feature flags\n..." }
+    ]
+  }
+}
+```
+
+## The exec command grammar
+
+The `exec` tool accepts four main commands. Use them in order: find a tool, inspect its schema, drill into a complex field, then call it. Each command goes in `params.arguments.command`, exactly like the `search` example in Step 4.
+
+| Command | Purpose |
+| --- | --- |
+| `search <regex>` | Find tools by name, title, or description. |
+| `info <tool_name>` | Show a tool's description and input schema. |
+| `schema <tool_name> <field_path>` | Drill into one field of a schema. |
+| `call <tool_name> <json_input>` | Run a tool with JSON input. |
+
+### search
+
+Find the tool you need. The argument is a JavaScript regular expression:
+
+```json
+{ "command": "search feature-flag" }
+```
+
+### info
+
+Show a tool's input schema. Run this once before you call a tool, then reuse the schema:
+
+```json
+{ "command": "info feature-flag-get-all" }
+```
+
+If `info` returns a summary with `hint` fields, the schema is large. Drill into each field you need with `schema` before you build the call.
+
+### schema
+
+Drill into one field of a schema with a dot path:
+
+```json
+{ "command": "schema query-trends series" }
+```
+
+### call
+
+Run the tool. Pass its input as JSON:
+
+```json
+{ "command": "call feature-flag-get-all {}" }
+```
+
+Wrap this command in the same `tools/call` request as Step 4:
+
+```bash
+curl https://mcp.posthog.com/mcp \
+  -H "Authorization: Bearer $POSTHOG_MCP_KEY" \
+  -H "Accept: application/json, text/event-stream" \
+  -H "Content-Type: application/json" \
+  -H "Mcp-Session-Id: $MCP_SESSION" \
+  -d '{
+    "jsonrpc": "2.0",
+    "id": 4,
+    "method": "tools/call",
+    "params": {
+      "name": "exec",
+      "arguments": { "command": "call feature-flag-get-all {}" }
+    }
+  }'
+```
+
+For the full command reference, including `--json` output and the `--confirm` flag for destructive tools, see the [MCP tools reference](/docs/model-context-protocol/tools).
+
+## Keep exploring
+
+- [MCP tools reference](/docs/model-context-protocol/tools) – every tool and the full `exec` command grammar
+- [FAQ and advanced setup](/docs/model-context-protocol/faq) – authentication, scoping, and filtering
+- [Overview](/docs/model-context-protocol) – install the MCP server into a client
